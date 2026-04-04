@@ -22,4 +22,5 @@ abstract class AppDatabase : RoomDatabase() {    abstract fun transactionDao(): 
                 ).build().also { instance = it }
             }
     }
+
 }

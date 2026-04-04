@@ -12,6 +12,9 @@ interface TransactionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTransaction(transaction: TransactionEntity)
 
+    @Query("SELECT * FROM transactions WHERE id = :transactionId LIMIT 1")
+    suspend fun getTransactionById(transactionId: String): TransactionEntity?
+
     @Query("SELECT * FROM transactions ORDER BY date DESC")
     fun getAllTransactions(): Flow<List<TransactionEntity>> // Flow updates UI automatically
 }

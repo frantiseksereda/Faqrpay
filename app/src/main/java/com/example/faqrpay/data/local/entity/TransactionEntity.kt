@@ -7,7 +7,8 @@ import java.time.LocalDateTime
 @Entity(tableName = "transactions")
 data class TransactionEntity(
     @PrimaryKey val id: String, // Your "Static + UUID" string
-    val date: LocalDateTime,             // Store as Long (Unix Timestamp) for easy sorting
+    val date: LocalDateTime,
     val amount: Double,
-    val currency: String
+    val currency: String,
+    val isPaid: Boolean
 )
