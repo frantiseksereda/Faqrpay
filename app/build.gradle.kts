@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     id("com.google.devtools.ksp") version "2.3.6"
+    kotlin("plugin.serialization") version "2.2.10"
 }
 
 android {
@@ -54,6 +55,13 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
+    // Retrofit for Network
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    // Converter for JSON (Kotlin Serialization)
+    implementation("com.squareup.retrofit2:converter-kotlinx-serialization:3.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
+    implementation(libs.androidx.core.i18n)
     // 1. Room for Transactions (Structured Data)
     val roomVersion = "2.8.0" // Or "3.0.0-alpha02" for Kotlin Multiplatform
     implementation("androidx.room:room-runtime:$roomVersion")

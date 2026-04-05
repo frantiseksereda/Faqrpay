@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
@@ -20,6 +21,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import com.example.faqrpay.ui.settings.SettingsScreen
+import com.example.faqrpay.ui.settings.SettingsViewModel
 import com.example.faqrpay.ui.theme.FaqrpayTheme
 
 class MainActivity : ComponentActivity() {
@@ -37,7 +40,7 @@ class MainActivity : ComponentActivity() {
 @PreviewScreenSizes
 @Composable
 fun FaqrpayApp() {
-    var currentDestination by rememberSaveable { mutableStateOf(AppDestinations.HOME) }
+    var currentDestination by rememberSaveable { mutableStateOf(AppDestinations.QR) }
 
     NavigationSuiteScaffold(
         navigationSuiteItems = {
@@ -57,10 +60,22 @@ fun FaqrpayApp() {
         }
     ) {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            Greeting(
-                name = "Android",
-                modifier = Modifier.padding(innerPadding)
-            )
+            Box(modifier = Modifier.padding(innerPadding)) {
+                when (currentDestination) {
+                    AppDestinations.QR -> {
+                        // TODO: Create QRScreen()
+                        Greeting("QR Platba")
+                    }
+                    AppDestinations.TRANSACTIONS -> {
+                        // TODO: Create TransactionsScreen()
+                        Greeting("Historie Transakcí")
+                    }
+                    AppDestinations.SETTINGS -> {
+                        // SHOW YOUR REAL SETTINGS SCREEN HERE
+                        SettingsScreen()
+                    }
+                }
+            }
         }
     }
 }
@@ -69,9 +84,9 @@ enum class AppDestinations(
     val label: String,
     val icon: Int,
 ) {
-    HOME("Home", R.drawable.ic_home),
-    FAVORITES("Favorites", R.drawable.ic_favorite),
-    PROFILE("Profile", R.drawable.ic_account_box),
+    QR("Platba", R.drawable.qr_code_24px),
+    TRANSACTIONS("Historie", R.drawable.receipt_long_24px),
+    SETTINGS("Nastavení", R.drawable.settings_24px),
 }
 
 @Composable
