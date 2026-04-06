@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import com.example.faqrpay.ui.qr.QRScreen
 import com.example.faqrpay.ui.settings.SettingsScreen
 import com.example.faqrpay.ui.settings.SettingsViewModel
 import com.example.faqrpay.ui.theme.FaqrpayTheme
@@ -63,8 +64,8 @@ fun FaqrpayApp() {
             Box(modifier = Modifier.padding(innerPadding)) {
                 when (currentDestination) {
                     AppDestinations.QR -> {
-                        // TODO: Create QRScreen()
-                        Greeting("QR Platba")
+                        QRScreen()
+
                     }
                     AppDestinations.TRANSACTIONS -> {
                         // TODO: Create TransactionsScreen()

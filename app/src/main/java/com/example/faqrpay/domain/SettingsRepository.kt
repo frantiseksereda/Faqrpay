@@ -19,6 +19,8 @@ class SettingsRepository(
     fun getAccountInfo(): String = secureSettings.getAccountNumber() ?: "Nenastaveno"
     fun setPassword(pass: String) = secureSettings.savePassword(pass)
     fun isPasswordNull(): Boolean = secureSettings.getPassword().isNullOrBlank()
+    fun getIban(): String = secureSettings.getIban() ?: "Nenastaveno"
+
     suspend fun updateTokenAndFetchAccount(newToken: String): Result<Unit> {
         return try {
             // 1. Save the token
@@ -35,7 +37,9 @@ class SettingsRepository(
             )
             // 4. Extract and save the account ID
             val accountId = response.accountStatement.info.accountId
+            val iban = response.accountStatement.info.iban
             secureSettings.saveAccountNumber(accountId)
+            secureSettings.saveIban(iban)
 
             Result.success(Unit)
         } catch (e: Exception) {

@@ -17,4 +17,7 @@ interface TransactionDao {
 
     @Query("SELECT * FROM transactions ORDER BY date DESC")
     fun getAllTransactions(): Flow<List<TransactionEntity>> // Flow updates UI automatically
+
+    @Query("UPDATE transactions SET isPaid = 1 WHERE id = :id")
+    suspend fun markAsPaid(id: String)
 }

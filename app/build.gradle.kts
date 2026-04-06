@@ -77,4 +77,7 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    // QR codes
+    implementation("com.google.zxing:core:3.5.4")
+
 }

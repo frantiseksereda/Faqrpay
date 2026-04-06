@@ -37,4 +37,10 @@ class SecureSettingsManager(context: Context) {
     }
 
     fun getAccountNumber(): String? = sharedPrefs.getString("accountNumber", null)
+
+    fun saveIban(iban: String) {
+        sharedPrefs.edit().putString("iban", iban).apply()
+    }
+
+    fun getIban(): String? = sharedPrefs.getString("iban", null)
 }

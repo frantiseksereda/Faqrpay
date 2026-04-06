@@ -151,6 +151,14 @@ fun ActualSettingsContent(viewModel: SettingsViewModel) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
+        Text("IBAN:", style = MaterialTheme.typography.titleMedium)
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = if (viewModel.isLoading) "Načítání..." else viewModel.currentIban,
+            style = MaterialTheme.typography.bodyMedium)
+
+        Spacer(modifier = Modifier.height(24.dp))
+
         // --- TOKEN SECTION ---
         Text("Fio API Token", style = MaterialTheme.typography.titleMedium)
         OutlinedTextField(

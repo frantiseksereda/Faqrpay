@@ -9,4 +9,6 @@ data class FioResponse(val accountStatement: AccountStatement)
 data class AccountStatement(val info: AccountInfo)
 
 @Serializable
-data class AccountInfo(val accountId: String)
+data class AccountInfo(
+    val accountId: String,
+    val iban: String)

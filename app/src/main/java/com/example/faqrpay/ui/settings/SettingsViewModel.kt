@@ -77,6 +77,9 @@ class SettingsViewModel(private val settingsRepo: SettingsRepository) : ViewMode
     var currentToken by mutableStateOf(settingsRepo.getAuthToken())
         private set
 
+    var currentIban by mutableStateOf(settingsRepo.getIban())
+        private set
+
     var successMessage by mutableStateOf<String?>(null)
         private set
 
@@ -88,6 +91,7 @@ class SettingsViewModel(private val settingsRepo: SettingsRepository) : ViewMode
             if (result.isSuccess) {
                 currentToken = settingsRepo.getAuthToken()
                 currentAccount = settingsRepo.getAccountInfo()
+                currentIban = settingsRepo.getIban()
                 successMessage = "Token uložen a získáno číslo účtu"
             } else {
                 errorMessage = "Nepodařilo se ověřit token: ${result.exceptionOrNull()?.message}"

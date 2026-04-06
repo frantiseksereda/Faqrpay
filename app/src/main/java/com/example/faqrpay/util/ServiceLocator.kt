@@ -1,9 +1,11 @@
 package com.example.faqrpay.util
 
 import android.content.Context
+import com.example.faqrpay.data.local.AppDatabase
 import com.example.faqrpay.data.security.SecureSettingsManager
 import com.example.faqrpay.data.network.FioApiService
 import com.example.faqrpay.domain.SettingsRepository
+import com.example.faqrpay.domain.TransactionManager
 import com.example.faqrpay.domain.TransactionRepository
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -37,5 +39,27 @@ class ServiceLocator {
                     secureInstance = it
                 }
             }
+
+        fun provideTransactionRepository(context: Context): TransactionRepository {
+            return TransactionRepository(
+                transactionDao = AppDatabase.getDatabase(context).transactionDao(),
+                apiService = fioApiService
+            )
+        }
+
+        fun provideSettingsRepository(context: Context): SettingsRepository {
+            // Build the settings repo using the secure storage and network service
+            return SettingsRepository(
+                secureSettings = getSecureSettings(context),
+                apiService = fioApiService
+            )
+        }
+
+        fun provideTransactionManager(context: Context): TransactionManager {
+            return TransactionManager(
+                transactionRepo = provideTransactionRepository(context),
+                settingsRepo = provideSettingsRepository(context)
+            )
+        }
     }
 }

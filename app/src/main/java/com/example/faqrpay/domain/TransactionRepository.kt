@@ -2,12 +2,16 @@ package com.example.faqrpay.domain
 
 import com.example.faqrpay.data.local.dao.TransactionDao
 import com.example.faqrpay.data.local.entity.TransactionEntity
+import com.example.faqrpay.data.network.FioApiService
 import kotlinx.coroutines.flow.Flow
 import java.time.Instant
 import java.time.LocalDateTime
 import java.util.UUID
 
-class TransactionRepository(private val transactionDao: TransactionDao) {
+class TransactionRepository(
+    private val transactionDao: TransactionDao,
+    private val apiService: FioApiService
+) {
 
     // --- READ (Get data for the UI) ---
     // We return a Flow so the UI updates automatically when data changes
@@ -34,12 +38,15 @@ class TransactionRepository(private val transactionDao: TransactionDao) {
 
     // --- UPDATE (Mark as Paid) ---
     suspend fun markAsPaid(transactionId: String) {
-        // You would add an @Update or @Query in your DAO to handle this
-        // e.g., transactionDao.updatePaidStatus(transactionId, true)
+        transactionDao.markAsPaid(transactionId)
     }
 
     // --- DELETE ---
     suspend fun deleteTransaction(transaction: TransactionEntity) {
         // transactionDao.delete(transaction)
     }
+
+    suspend fun getRawTransactions(token: String, start: String, end: String) =
+        apiService.getRawTransactions(token, start, end)
+
 }
