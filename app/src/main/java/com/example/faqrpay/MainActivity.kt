@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import com.example.faqrpay.ui.history.HistoryScreen
 import com.example.faqrpay.ui.qr.QRScreen
 import com.example.faqrpay.ui.settings.SettingsScreen
 import com.example.faqrpay.ui.settings.SettingsViewModel
@@ -68,8 +69,7 @@ fun FaqrpayApp() {
 
                     }
                     AppDestinations.TRANSACTIONS -> {
-                        // TODO: Create TransactionsScreen()
-                        Greeting("Historie Transakcí")
+                        HistoryScreen()
                     }
                     AppDestinations.SETTINGS -> {
                         // SHOW YOUR REAL SETTINGS SCREEN HERE
