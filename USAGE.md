@@ -4,7 +4,7 @@ FaqrPay je jednoduchý nástroj pro generování platebních QR kódů a ověřo
 
 ### Krok 1: Prvotní nastavení
 1. **Zabezpečení:** Při prvním spuštění si vytvořte heslo. Tímto heslem se šifruje vaše lokální úložiště v telefonu.
-2. **API Token:** Přihlaste se do Fio Internetbankingu, jděte do Nastavení -> API a vytvořte si **"Pouze pro čtení"** (Read-only) token.
+2. **API Token:** Přihlaste se do Fio Internetbankingu, jděte do Nastavení -> API a vytvořte si **"Pouze pro čtení"** (Read-only) token k účtu, na který chcete přijímat platby.
 3. **Aktivace:** Vložte token do Nastavení v aplikaci FaqrPay. Aplikace automaticky načte číslo vašeho účtu (IBAN).
 
 ### Krok 2: Generování platby
@@ -28,7 +28,7 @@ FaqrPay is a simple utility to generate payment QR codes and verify their paymen
 
 ### Step 1: Initial Setup
 1. **Security:** On the first launch, create a password. This password encrypts your local storage.
-2. **API Token:** Log in to your Fio Internet Banking, go to Settings -> API, and create a **Read-only** token.
+2. **API Token:** Log in to your Fio Internet Banking, go to Settings -> API, and create a **Read-only** token for account where you would receive payments. 
 3. **Activation:** Paste the token into FaqrPay's Settings. The app will automatically fetch your account number (IBAN).
 
 ### Step 2: Generating a Payment

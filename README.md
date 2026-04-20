@@ -1,4 +1,4 @@
-# FaqrPay (cz.sereda.faqrpay)
+# FaqrPay (com.sereda.faqrpay)
 
 **FaqrPay** is a local-first Android application designed for small businesses or individuals using Fio Bank (CZ). It allows users to generate SPD-compliant QR codes and verify payment arrival in real-time via the Fio API.
 
