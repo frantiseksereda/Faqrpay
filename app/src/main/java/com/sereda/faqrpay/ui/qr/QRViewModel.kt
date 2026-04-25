@@ -85,7 +85,7 @@ class QRViewModel(private val transactionManager: TransactionManager) : ViewMode
 
     private fun startCooldown() {
         viewModelScope.launch {
-            cooldownSeconds = 15
+            cooldownSeconds = 31
             while (cooldownSeconds > 0) {
                 kotlinx.coroutines.delay(1000)
                 cooldownSeconds--
